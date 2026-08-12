@@ -1,0 +1,23 @@
+name: Environment Secrets Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment: development
+
+    steps:
+      - name: Show environment variable
+        run: |
+          echo "Deploying to:"
+          echo "${{ vars.API_URL }}"
+
+      - name: Use environment secret
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          echo "API key loaded successfully"
+          echo "Secret length: ${#API_KEY}"
