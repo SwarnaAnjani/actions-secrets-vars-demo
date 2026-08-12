@@ -1,0 +1,14 @@
+name: Variables Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  variable-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display variables
+        run: |
+          echo "Environment = ${{ vars.APP_ENV }}"
+          echo "AWS Region = ${{ vars.AWS_REGION }}"
